@@ -1,0 +1,42 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('bgr.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.login-box {
+    background: rgba(255, 255, 255, 0.9); /* Warna ungu dengan transparansi */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    color: rgb(2, 2, 2); /* Agar teks mudah dibaca */
+}
+.login-box input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.login-box input[type="text"], 
+.login-box input[type="password"] {
+    background: white;
+    color: black;
+}
+.login-box input[type="submit"] {
+    background: #5E2B62;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login-box input[type="submit"]:hover {
+    background: #7A3E7B;
+}
+.login-box img {
+    margin-bo
