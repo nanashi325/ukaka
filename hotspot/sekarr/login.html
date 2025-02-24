@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />    
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link rel="stylesheet" href="login.css" media="screen">
+<script type="text/javascript" src="/md5.js"></script> <!-- Tambahkan md5.js -->
+<script type="text/javascript">
+    function doLogin() {
+        document.sendin.username.value = document.login.username.value;
+        document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+        document.sendin.submit();
+        return false;
+    }
+</script>
+</head>
+<body>
+<div class="login-box">
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+    $(endif)
+
+    <form class="vertical-form" name="login" action="$(link-login-only)" method="post"
+        $(if chap-id) onSubmit="return doLogin()" $(endif)>
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+
+        <legend>
+            <img class="logo" src="plo.png" width="150px" />
+            <p>SELAMAT DATANG DI HOTSPOT SMKN9 BANDAR LAMPUNG</p>
+        </legend>
+        <input name="username" type="text" value="$(username)" placeholder="User Name" size="30" />
+        <input autocomplete="off" name="password" type="password" placeholder="Password" size="30" />
+        <input name="submit" type="submit" value="LOGIN" />
+        <div class='footer'>
+            <p>
+                <img src="images-removebg-preview.png" alt="WhatsApp" width="23px" 
+                     style="vertical-align: middle; margin-right: 5px;">
+             SEKAR MAULIA
+            </p>
+            <p>
+                <img src="wa.png" alt="WhatsApp" width="20px" 
+                     style="vertical-align: middle; margin-right: 5px;">
+                0858 sisanya kapan kapan
+            </p>
+            <p>$(if trial == 'yes')Free trial available, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a>.$(endif)</p>
+            <p>$(if error)<span style="color: #FF8080; font-size: 16px">$(error)</span>$(endif)</p>
+        </div>
+    </form>
+</div>
+</body>
+</html>
